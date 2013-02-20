@@ -135,7 +135,7 @@ decode(Struct) when Struct#xmlElement.name == struct ->
 decode(Array) when Array#xmlElement.name == array ->
     {Data, _} = match_element([data], Array#xmlElement.content),
     {array, decode_values(Data#xmlElement.content)};
-decode(Int) when Int#xmlElement.name == int; Int#xmlElement.name == i4 ->
+decode(Int) when Int#xmlElement.name == int; Int#xmlElement.name == i4; Int#xmlElement.name == i8 ->
     TextValue = get_text_value(Int#xmlElement.content),
     make_integer(TextValue);
 decode(Boolean) when Boolean#xmlElement.name == boolean ->
